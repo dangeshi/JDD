@@ -1,5 +1,4 @@
-# File: .github/workflows/repo-sync.yml
-name: 同步lxk0301脚本
+name: 同步liuning0307脚本
 on:
   schedule:
     - cron: '1 0,15 * * *'
@@ -9,7 +8,7 @@ on:
   push:
     branches: [ master ]
   repository_dispatch:
-    types: sync-lxk0301-scripts
+    types: sync-liuning0307-lxk0301
 jobs:
   repo-sync:
     env:
@@ -21,12 +20,11 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: sync lxk0301-scripts
+      - name: sync liuning0307-lxk0301
         uses: repo-sync/github-sync@v2
         if: env.PAT
         with:
-          source_repo: "https://github.com/lxk0301/jd_scripts.git"
+          source_repo: "https://github.com/liuning0307/lxk0301.git"
           source_branch: "master"
-          destination_branch: "master"
+          destination_branch: "main"
           github_token: ${{ secrets.PAT }}
-     
